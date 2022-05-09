@@ -1,16 +1,25 @@
+import discord
+from random import randint
 import os
-from discord.ext import commands
 
-bot = commands.Bot(command_prefix="!")
-TOKEN = os.getenv("DISCORD_TOKEN")
+TOKEN = os.getenv()
 
-@bot.event
+client = discord.Client()
+
+@client.event
 async def on_ready():
-    print(f"Logged in as {bot.user.name}({bot.user.id})")
+    activity = discord.Activity(type=discord.ActivityType.listening, name="majk spirit")
+    await client.change_presence(activity=activity)
+    print('We have logged in as {0.user}'.format(client))
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send("pong")
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
 
-if __name__ == "__main__":
-    bot.run(TOKEN)
+    seed = randint(0,10)
+
+    if (seed == 5) or (message.content.startswith("počuvaj")):
+        await message.channel.send('hej, no', reference=message)
+
+client.run(TOKEN)
