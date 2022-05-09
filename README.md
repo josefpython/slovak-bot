@@ -1,1 +1,1 @@
-#bot co rika hej no kdyz mu reknes pocuvaj je to docela peak
+# bot co rika hej no kdyz mu reknes pocuvaj je to docela peak
