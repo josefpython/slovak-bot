@@ -2,7 +2,7 @@ import discord
 from random import randint
 import os
 
-TOKEN = os.getenv()
+TOKEN = os.getenv("DISCORD_TOKEN")
 
 client = discord.Client()
 
